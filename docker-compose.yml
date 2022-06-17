@@ -1,0 +1,20 @@
+services:
+  web-service:
+    container_name: web-app
+    image: app-image
+    build: .
+    ports:
+      - 9090:8080
+    environment:
+    - PSQL_HOST=postgresdb #service_name
+    - PSQL_PORT=5432 #_port_on_docker
+    - PSQL_USERNAME=postgres
+    - PSQL_PASSWROD=root
+
+  postgres:
+    container_name: postgresdb
+    image: postgres
+    ports:
+      - 5433:5432
+    environment:
+    - POSTGRES_PASSWORD=root
